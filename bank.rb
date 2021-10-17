@@ -6,4 +6,5 @@ class Bank
 
   def accept_money(amount, *players)
     players.each { |player| player.money -= amount }
+  end
 end
