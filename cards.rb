@@ -14,9 +14,25 @@ class Cards
     end
   end
 
+#protected
+  def card_weight(cards)
+    weight = 0
+
+    cards.each do |card|
+      if card[0].to_i != 0
+        weight += card[0].to_i
+      else
+        weight += 10
+      end
+    end
+
+    return weight
+  end
+
   def handle_card(number, *players)
     players.each do |player|
       cards = select_card(number)
+      player.cards_weight += card_weight(cards)
       
       cards.each do |card|
         player.cards << card 
