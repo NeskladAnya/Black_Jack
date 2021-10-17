@@ -14,12 +14,14 @@ class Cards
     end
   end
 
-  def handle_card(player, number)
-    cards = select_card(number)
-    
-    cards.each do |card|
-      player.cards << card 
-      @deck.delete(card)
+  def handle_card(number, *players)
+    players.each do |player|
+      cards = select_card(number)
+      
+      cards.each do |card|
+        player.cards << card 
+        @deck.delete(card)
+      end
     end
   end
 
