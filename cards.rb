@@ -14,7 +14,20 @@ class Cards
     end
   end
 
-#protected
+  def handle_card(number, *players)
+    players.each do |player|
+      cards = select_card(number)
+      player.cards_weight += card_weight(cards)
+      
+      cards.each do |card|
+        player.cards << card 
+        @deck.delete(card)
+      end
+    end
+  end
+
+# protected
+
   def card_weight(cards)
     weight = 0
 
@@ -27,18 +40,6 @@ class Cards
     end
 
     return weight
-  end
-
-  def handle_card(number, *players)
-    players.each do |player|
-      cards = select_card(number)
-      player.cards_weight += card_weight(cards)
-      
-      cards.each do |card|
-        player.cards << card 
-        @deck.delete(card)
-      end
-    end
   end
 
   def select_card(number)
