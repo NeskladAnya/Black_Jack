@@ -14,18 +14,27 @@ class Cards
     end
   end
 
-  def handle_card(number, *players)
-    players.each do |player|
+  def handle_card(number, *participants)
+    participants.each do |participant|
       cards = select_card(number)
-      player.cards_weight += card_weight(cards)
+      participant.cards_weight += card_weight(cards)
       
       cards.each do |card|
-        player.cards << card 
+        participant.cards << card 
         @deck.delete(card)
       end
     end
   end
 
+  def open_cards(*participants)
+    participants.each do |participant|
+      if participant.role == 'player'
+        puts "The player #{participant.name} cards: #{participant.cards}. Total weight is #{participant.cards_weight}."
+      elsif participant.role == 'dealer'
+        puts "The dealer cards: #{participant.cards}. Total weight is #{participant.cards_weight}."
+      end
+    end
+  end
 # protected
 
   def card_weight(cards)
