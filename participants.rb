@@ -1,5 +1,6 @@
 class Participants
-  attr_accessor :name, :role, :money, :cards, :cards_weight, :turn
+  attr_reader :name, :role
+  attr_accessor :money, :cards, :cards_weight, :turn, :passes
 
   def self.all
    return @@participants
@@ -14,20 +15,11 @@ class Participants
     @cards = []
     @cards_weight = 0
     @turn = false
+    @passes = 0
 
     validate!
 
     @@participants << self    
-  end
-
-  def skip_turn
-    raise "It's not your turn" if turn == false
-
-    if role == 'player'
-      self.turn = false
-    elsif role == 'dealer'
-      self.turn = false if cards_weight >= 17
-    end
   end
 
   def validate!
