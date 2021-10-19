@@ -34,8 +34,8 @@ class Participants
     raise 'Incorrect role' unless role == 'player' || role == 'dealer'
     raise 'A player should have a name' if role == 'player' && name == nil
 
-    @@participants.find do |participant|
-      raise 'Only one dealer can be created' if participant.role == 'dealer'
+    if role == 'dealer' && @@participants.detect.count { |participant| participant.role == 'dealer' } != 0
+      raise 'Only one dealer can be created'
     end
   end
 end
