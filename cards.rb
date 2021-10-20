@@ -43,19 +43,20 @@ class Cards
     weight = 0
 
     cards.each do |card|
-      if card[0].to_i != 0
-        weight += card[0].to_i
-      elsif card[0] == 'A' 
-        weight += 10 if 10 + participant.cards_weight <= 21
-        weight += 1 if 10 + participant.cards_weight > 21
-      else
-        weight += 10
+      card.split(/\D\z/).each do |value|
+        if value.to_i != 0
+          weight += value.to_i
+        elsif value == 'A'
+          weight += 10 if 10 + participant.cards_weight <= 21
+          weight += 1 if 10 + participant.cards_weight > 21
+        else
+          weight += 10
+        end
       end
     end
 
     return weight
   end
-
 
   def select_card(number)
     @handled_cards ||= []
