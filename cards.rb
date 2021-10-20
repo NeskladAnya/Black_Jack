@@ -17,12 +17,13 @@ class Cards
   def handle_card(number, *participants)
     participants.each do |participant|
       cards = select_card(number)
-      participant.cards_weight += card_weight(cards)
-      
+
       cards.each do |card|
         participant.cards << card 
         @deck.delete(card)
       end
+
+      participant.cards_weight += card_weight(cards, participant)
     end
   end
 
@@ -35,14 +36,18 @@ class Cards
       end
     end
   end
+
 # protected
 
-  def card_weight(cards)
+  def card_weight(cards, participant)
     weight = 0
 
     cards.each do |card|
       if card[0].to_i != 0
         weight += card[0].to_i
+      elsif card[0] == 'A' 
+        weight += 10 if 10 + participant.cards_weight <= 21
+        weight += 1 if 10 + participant.cards_weight > 21
       else
         weight += 10
       end
@@ -50,6 +55,7 @@ class Cards
 
     return weight
   end
+
 
   def select_card(number)
     @handled_cards ||= []
