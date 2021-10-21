@@ -1,6 +1,6 @@
 class Participants
   attr_reader :name, :role
-  attr_accessor :money, :cards, :cards_weight, :turn, :passes
+  attr_accessor :money, :cards, :cards_weight, :turn, :passes, :game_played
 
   def self.all
    return @@participants
@@ -16,6 +16,7 @@ class Participants
     @cards_weight = 0
     @turn = false
     @passes = 0
+    @game_played = 0
 
     validate!
 
