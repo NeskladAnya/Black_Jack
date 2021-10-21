@@ -3,10 +3,10 @@ class Participants
   attr_accessor :money, :hand, :passes, :game_played, :turn
 
   def self.all
-   return @@participants
+   @@participants
   end
 
-  def initialize(name = nil, role)
+  def initialize(role, name = nil)
     @@participants ||= []
 
     @name = name
@@ -19,12 +19,12 @@ class Participants
 
     validate!
 
-    @@participants << self  
+    @@participants << self
   end
 
   def validate!
     raise 'Incorrect role' unless role == 'player' || role == 'dealer'
-    raise 'A player should have a name' if role == 'player' && name == nil
+    raise 'A player should have a name' if role == 'player' && name.nil?
 
     if role == 'dealer' && @@participants.detect.count { |participant| participant.role == 'dealer' } != 0
       raise 'Only one dealer can be created'
