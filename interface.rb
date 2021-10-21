@@ -1,8 +1,3 @@
-require_relative 'participants'
-require_relative 'bank'
-require_relative 'cards'
-require_relative 'action'
-
 class Interface
   attr_reader :player, :dealer, :bank, :action
   attr_accessor :main_menu_answer, :move_answer, :cards, :game_ended
