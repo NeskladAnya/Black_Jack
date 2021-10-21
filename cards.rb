@@ -37,7 +37,7 @@ class Cards
     end
   end
 
-# protected
+ protected
 
   def card_weight(cards, participant)
     weight = 0
