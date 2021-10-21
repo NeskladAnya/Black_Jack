@@ -1,6 +1,6 @@
 class Participants
   attr_reader :name, :role
-  attr_accessor :money, :cards, :cards_weight, :turn, :passes, :game_played
+  attr_accessor :money, :hand, :passes, :game_played, :turn
 
   def self.all
    return @@participants
@@ -11,16 +11,15 @@ class Participants
 
     @name = name
     @role = role
+    @hand = Hand.new
     @money = 0
-    @cards = []
-    @cards_weight = 0
-    @turn = false
     @passes = 0
     @game_played = 0
+    @turn = false
 
     validate!
 
-    @@participants << self    
+    @@participants << self  
   end
 
   def validate!
