@@ -9,7 +9,7 @@ class Cards
 
     CARD_VALUES.each do |value|
       CARD_SUITS.each do |suit|
-        deck << value + suit
+        deck << Card.new(value, suit)
       end
     end
   end
