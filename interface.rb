@@ -87,7 +87,7 @@ class Interface
     puts "The dealer cards weight is #{action.dealer.hand.card_weight}"
 
     if winner.is_a?(Array)
-      puts 'It's draw"
+      puts "It's draw"
     else
       puts "The winner is #{winner.role} #{winner.name if winner.name != nil}"
     end
