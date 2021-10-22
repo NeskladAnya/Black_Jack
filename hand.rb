@@ -1,8 +1,14 @@
 class Hand
-  attr_accessor :cards, :cards_weight
+  attr_accessor :cards
 
   def initialize
     @cards = []
+  end
+
+  def open_cards
+    cards.map do |card|
+      "#{card.value}#{card.suit}"
+    end
   end
 
   def card_weight
