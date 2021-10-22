@@ -7,7 +7,7 @@ class Bank
 
   def give_money(amount, *players)
     players.each do |player|
-      player.money += amount
+      player.account.balance += amount
       @bank -= amount
     end
 
@@ -16,7 +16,7 @@ class Bank
 
   def accept_money(amount, *players)
     players.each do |player|
-      player.money -= amount
+      player.account.balance -= amount
       @bank += amount
     end
 
