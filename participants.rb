@@ -17,9 +17,9 @@ class Participants
     @game_played = 0
     @turn = false
 
-    validate!
-
     @@participants << self
+
+    validate!
   end
 
   def validate!
