@@ -36,4 +36,14 @@ class Hand
 
     return weight
   end
+
+  def clean
+    @cards = []
+    @turn = false
+    @passes = 0
+  end
+
+  def validate!
+    rais 'The max number of cards is 3' if cards.count >= 3
+  end
 end
