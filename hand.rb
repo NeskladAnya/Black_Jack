@@ -1,14 +1,24 @@
 class Hand
-  attr_accessor :cards
+  attr_accessor :cards, :turn, :passes
 
   def initialize
     @cards = []
+    @turn = false
+    @passes = 0
   end
 
   def open_cards
     cards.map do |card|
       "#{card.value}#{card.suit}"
     end
+  end
+
+  def pass
+    raise "It's not your turn" if turn == false
+    raise 'You can pass only once' if passes >= 1
+
+    turn = false
+    passes += 1
   end
 
   def card_weight

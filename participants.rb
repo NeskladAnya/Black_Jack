@@ -13,9 +13,7 @@ class Participants
     @role = role
     @hand = Hand.new
     @money = 0
-    @passes = 0
     @game_played = 0
-    @turn = false
 
     @@participants << self
 
