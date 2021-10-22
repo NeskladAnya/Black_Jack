@@ -32,8 +32,6 @@ class Interface
     puts 'The game is over'
   end
 
-#  protected
-
   def initialize_participants
     print 'Enter your name: '
     name = gets.chomp
@@ -81,15 +79,15 @@ class Interface
 
     puts '----------------'
     puts 'The game is over'
-    
+
     puts "Your cards are: #{action.player.hand.open_cards}"
     puts "Your cards weight is #{action.player.hand.card_weight}"
 
     puts "The dealer cards are: #{action.dealer.hand.open_cards}"
     puts "The dealer cards weight is #{action.dealer.hand.card_weight}"
-    
+
     if winner.is_a?(Array)
-      puts "It's draw"
+      puts 'It's draw"
     else
       puts "The winner is #{winner.role} #{winner.name if winner.name != nil}"
     end

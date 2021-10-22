@@ -1,8 +1,0 @@
-require_relative 'interface'
-require_relative 'action'
-require_relative 'participants'
-require_relative 'bank'
-require_relative 'account'
-require_relative 'deck'
-require_relative 'card'
-require_relative 'hand'

@@ -2,7 +2,7 @@ class Participants
   attr_accessor :name, :role, :hand, :account, :game_played
 
   def self.all
-   @@participants
+    @@participants
   end
 
   def initialize(role, name = nil)
