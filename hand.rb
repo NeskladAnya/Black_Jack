@@ -17,8 +17,8 @@ class Hand
     raise "It's not your turn" if turn == false
     raise 'You can pass only once' if passes >= 1
 
-    turn = false
-    passes += 1
+    @turn = false
+    @passes += 1
   end
 
   def card_weight
@@ -44,6 +44,7 @@ class Hand
   end
 
   def validate!
-    rais 'The max number of cards is 3' if cards.count >= 3
+    raise 'The max number of cards is 3' if cards.count >= 200
   end
+
 end
